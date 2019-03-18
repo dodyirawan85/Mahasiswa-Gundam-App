@@ -2,7 +2,6 @@ package com.farizdotid.mahasiswagundam.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,9 +20,7 @@ import java.util.List;
 public class LihatMahasiswaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private LinearLayoutManager layoutManager;
     private MahasiswaAdapter adapter;
-    private DBHandler dbHandler;
     private TextView txt_resultadapter;
     private List<Mahasiswa> mahasiswaList = new ArrayList<>();
 
@@ -35,16 +32,24 @@ public class LihatMahasiswaActivity extends AppCompatActivity {
         initComponents();
         initRecyclerView();
         cekDataRecyclerView();
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     // FUNGSI INI UNTUK MENG-INIT RECYLERVIEW BESERTA ADAPTERNYA
     private void initRecyclerView(){
-        recyclerView = (RecyclerView) findViewById(R.id.rv_mahasiswa);
+        recyclerView = findViewById(R.id.rv_mahasiswa);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        dbHandler = new DBHandler(LihatMahasiswaActivity.this);
+        DBHandler dbHandler = new DBHandler(LihatMahasiswaActivity.this);
         mahasiswaList = dbHandler.getSemuaMahasiswa();
         adapter = new MahasiswaAdapter(mahasiswaList);
         recyclerView.setAdapter(adapter);
@@ -52,7 +57,7 @@ public class LihatMahasiswaActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        txt_resultadapter = (TextView) findViewById(R.id.txt_resultadapter);
+        txt_resultadapter = findViewById(R.id.txt_resultadapter);
     }
 
     // FUNGSI INI UNTUK MENGECEK APAKAH ADA DATA DI DALEM RECYCLERVIEW ATAU TIDAK
@@ -66,7 +71,8 @@ public class LihatMahasiswaActivity extends AppCompatActivity {
 
             recyclerView.addOnItemTouchListener(
                     new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
-                        @Override public void onItemClick(View view, int position) {
+                        @Override
+                        public void onItemClick(View view, int position) {
                             // TODO Handle item click
                             Mahasiswa mhs = mahasiswaList.get(position);
                             String nama = mhs.getNama();

@@ -33,9 +33,9 @@ public class TambahMahasiswaActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        et_nama = (EditText) findViewById(R.id.et_nama);
-        et_tempatlahir = (EditText) findViewById(R.id.et_tempatlahir);
-        button_tambahdata = (Button) findViewById(R.id.button_tambahdata);
+        et_nama = findViewById(R.id.et_nama);
+        et_tempatlahir = findViewById(R.id.et_tempatlahir);
+        button_tambahdata = findViewById(R.id.button_tambahdata);
 
         button_tambahdata.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +54,8 @@ public class TambahMahasiswaActivity extends AppCompatActivity {
         if (form_nama.isEmpty()){
             et_nama.setError("Isi nama dulu");
             et_nama.requestFocus();
-        } if (form_tempatlahir.isEmpty()){
+        }
+        if (form_tempatlahir.isEmpty()){
             et_tempatlahir.setError("Isi tempat lahir dulu");
             et_tempatlahir.requestFocus();
         } else {
@@ -64,6 +65,7 @@ public class TambahMahasiswaActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
 
             Toast.makeText(TambahMahasiswaActivity.this, "Berhasil Menambahkan Data", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }
