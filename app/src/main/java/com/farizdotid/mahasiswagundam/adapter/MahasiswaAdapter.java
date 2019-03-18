@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.farizdotid.mahasiswagundam.R;
 import com.farizdotid.mahasiswagundam.model.Mahasiswa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.MahasiswaViewHolder> {
 
-    private List<Mahasiswa> mahasiswaList = new ArrayList<>();
+    private List<Mahasiswa> mahasiswaList;
 
     public MahasiswaAdapter(List<Mahasiswa> mahasiswaList) {
         this.mahasiswaList = mahasiswaList;

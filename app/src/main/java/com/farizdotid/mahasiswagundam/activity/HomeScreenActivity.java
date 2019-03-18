@@ -10,13 +10,7 @@ import android.widget.Toast;
 import com.farizdotid.mahasiswagundam.R;
 import com.farizdotid.mahasiswagundam.helper.DBHandler;
 
-import java.io.BufferedReader;
-
 public class HomeScreenActivity extends AppCompatActivity {
-
-    private Button button_tambahdata;
-    private Button button_lihatdata;
-    private Button button_hapusdata;
     private DBHandler dbHandler;
 
     @Override
@@ -29,9 +23,9 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        button_tambahdata = (Button) findViewById(R.id.button_tambahdata);
-        button_lihatdata = (Button) findViewById(R.id.button_lihatdata);
-        button_hapusdata = (Button) findViewById(R.id.button_hapusdata);
+        Button button_tambahdata = findViewById(R.id.button_tambahdata);
+        Button button_lihatdata = findViewById(R.id.button_lihatdata);
+        Button button_hapusdata = findViewById(R.id.button_hapusdata);
 
         button_tambahdata.setOnClickListener(new View.OnClickListener() {
             @Override

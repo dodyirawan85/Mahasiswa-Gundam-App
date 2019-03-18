@@ -18,10 +18,8 @@ public class TambahMahasiswaActivity extends AppCompatActivity {
 
     private EditText et_nama;
     private EditText et_tempatlahir;
-    private Button button_tambahdata;
 
     private DBHandler dbHandler;
-    private MahasiswaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +33,7 @@ public class TambahMahasiswaActivity extends AppCompatActivity {
     private void initComponents(){
         et_nama = findViewById(R.id.et_nama);
         et_tempatlahir = findViewById(R.id.et_tempatlahir);
-        button_tambahdata = findViewById(R.id.button_tambahdata);
+        Button button_tambahdata = findViewById(R.id.button_tambahdata);
 
         button_tambahdata.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +59,7 @@ public class TambahMahasiswaActivity extends AppCompatActivity {
         } else {
             dbHandler.tambahMahasiswa(new Mahasiswa(form_nama, form_tempatlahir));
             List<Mahasiswa> mahasiswaList = dbHandler.getSemuaMahasiswa();
-            adapter = new MahasiswaAdapter(mahasiswaList);
+            MahasiswaAdapter adapter = new MahasiswaAdapter(mahasiswaList);
             adapter.notifyDataSetChanged();
 
             Toast.makeText(TambahMahasiswaActivity.this, "Berhasil Menambahkan Data", Toast.LENGTH_SHORT).show();
